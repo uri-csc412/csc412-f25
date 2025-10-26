@@ -9,21 +9,21 @@ all: clean build-example build-tests run-tests
 arena.o: arena.c arena.h
 	$(CC) $(CFLAGS) -c arena.c
 
-tests.o: tests.c arena.h
-	$(CC) $(CFLAGS) -c tests.c
+arena_tests.o: arena_tests.c arena.h
+	$(CC) $(CFLAGS) -c arena_tests.c
 
 build-example:
 	$(CC) $(CFLAGS) -o arena_example main.c arena.c
 
-build-tests: tests.o arena.o
-	$(CC) $(CFLAGS) -o tests $^ $(LDFLAGS)
+build-tests: arena_tests.o arena.o
+	$(CC) $(CFLAGS) -o arena_tests $^ $(LDFLAGS)
 
 run-tests:
-	./tests
+	./arena_tests
 
 run-example:
 	./arena_example
 
 clean:
-	rm -f *.o tests
+	rm -f *.o arena_tests
 	rm -f *.o arena_example
