@@ -10,6 +10,7 @@ package raft
 
 import (
 	"math/rand"
+	"sync"
 	"testing"
 	"time"
 )
@@ -220,11 +221,6 @@ func TestFollowerRejoin3A(t *testing.T) {
 	cfg.end()
 }
 
-/*
-	From Shaun: These are the other tests if you fully implement it in the future! :)
-*/
-
-/*
 func TestBasicAgree3B(t *testing.T) {
 	servers := 3
 	cfg := make_config(t, servers, false, false)
@@ -774,6 +770,11 @@ loop:
 	cfg.end()
 }
 
+/*
+	From Shaun: These are the other tests if you fully implement it in the future! :)
+*/
+
+/*
 func TestPersist13C(t *testing.T) {
 	servers := 3
 	cfg := make_config(t, servers, false, false)
